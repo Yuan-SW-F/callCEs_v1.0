@@ -1,0 +1,117 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+# Author: fuyuan (907569282@qq.com)
+# Created Time: 2019-09-23 09:27:07
+# Example CNSanner.py   
+import sys, os, re
+
+gff = sys.argv[1]
+bed = sys.argv[2]
+cmd = 'cut -f 1,4,5 ' + bed + ' > ' + bed + '.bed'
+bed = bed + '.bed'
+print cmd
+
+cmd = 'grep -P "\\texon\\t" ' + gff + '| grep AABBDD_AA | sed s/AABBDD_AA.// > ' + gff + ".exon"
+print cmd
+cmd = 'grep -P "\\tCDS\\t" ' + gff + '| grep AABBDD_AA | sed s/AABBDD_AA.// > ' + gff + ".cds"
+print cmd
+cmd = 'grep -P "\\tmRNA\\t" ' + gff + '| grep AABBDD_AA | sed s/AABBDD_AA.// > ' + gff + ".mrna"
+print cmd
+
+cmd = 'bedtools intersect -a ' + gff + ".mrna -b " + bed + " > " + gff + ".mrna.cons.bed"
+print cmd
+cmd = 'bedtools subtract -a ' + gff + ".mrna -b " + gff + ".mrna.cons.bed" + " > " + gff + ".intron.cons.bed"
+print cmd
+cmd = 'bedtools subtract -a ' + bed + " -b " + gff + ".mrna " + " > " + gff + ".cns.bed"
+print cmd
+
+fp = open(gff + ".mrna")
+tss = {}
+od  = {}
+ids = {}
+id = ''
+for line in fp:
+	line = line.strip()
+	list = line.split()
+	re_id = re.match('ID=([^\;\s]+)', list[8])
+	id = re_id.group(1)
+	od[id] = list[6]
+	if not ids.has_key(list[0]):
+		ids[list[0]] = []
+	ids[list[0]].append(id)
+	if list[6] == '+':
+		tss[id] = int(list[3])
+	else:
+		tss[id] = int(list[4])
+
+fp = open(gff + ".cns.bed")
+ft1 = open(gff + ".cns.bed.upstream", 'w')
+ft2 = open(gff + ".cns.bed.downstream", 'w')
+
+for line in fp:
+	line = line.strip()
+	list = line.split()
+	length = 0
+	note = ''
+	check = 0
+	for i in ids[list[0]]:
+		if check > 0:
+			check = 0
+			break
+		if od[i] == '+':
+#			print length
+#			if length > 0 and tss[i] - int(list[2]) < 0:
+#				ft1.write('\t'.join([list[0], list[1], list[2], 'UPSTREAM', note]) + '\n')
+#				ft2.write('\t'.join([list[0], list[1], list[2], 'DOWNSTREAM', i, str(tss[i]), od[i], str(tss[i] - int(list[2]))]) + '\n')
+#				check = 1
+			if length > 0 and tss[i] - int(list[2]) > length:
+				ft1.write('\t'.join([list[0], list[1], list[2], 'UPSTREAM', note]) + '\n')
+				check = 1
+			length = tss[i] - int(list[2])
+			note = '\t'.join([i, str(tss[i]), od[i], str(length)]) 
+		else:
+			if length > 0 and int(list[2]) - tss[i] > length:
+				ft1.write('\t'.join([list[0], list[1], list[2], 'UPSTREAM', note]) + '\n')
+				check = 1
+			length = int(list[2]) - tss[i]
+			note = '\t'.join([i, str(tss[i]), od[i], str(length)])
+
+fp = open(gff + ".cns.bed")
+for line in fp:
+	line = line.strip()
+	list = line.split()
+	length = 0
+	note = ''
+	check = 0
+	for i in ids[list[0]]:
+		if check > 0:
+			check = 0
+			break
+		if od[i] == '+':
+			if length < 0 and tss[i] - int(list[2]) < length:
+				ft2.write('\t'.join([list[0], list[1], list[2], 'DOWNSTREAM', note]) + '\n')
+				check = 1
+			length = tss[i] - int(list[2])
+			note = '\t'.join([i, str(tss[i]), od[i], str(length)])
+		else:
+			if length < 0 and int(list[2]) - tss[i] < length:
+				ft2.write('\t'.join([list[0], list[1], list[2], 'DOWNSTREAM', note]) + '\n')
+				check = 1
+				length = int(list[1]) - tss[i]
+				note = '\t'.join([i, str(tss[i]), od[i], str(length)])
+
+
+
+	
+
+
+
+#exon = os.system('grep -P "\texon\t" ' + gff + ' > ' + gff + ".exon")
+#cds = os.system('grep -P "\tCDS\t" ' + gff + ' > ' + gff + ".cds")
+#mrna = os.system('grep -P "\tmRNA\t" ' + gff + ' > ' + gff + ".mrna")
+#c_mrna = os.system('bedtools intersect -a ' + gff + ".mrna -b " + bed + " > " + gff + ".mrna.cons.bed")
+#c_intron = os.system('bedtools subtract -a ' + gff + ".mrna -b " + gff + ".mrna.cons.bed" + " > " + gff + ".intron.cons.bed")
+#cns = os.system('bedtools subtract -a ' + bed + " -b " + gff + ".mrna " + " > " + gff + ".cns.bed")
+
+
+
