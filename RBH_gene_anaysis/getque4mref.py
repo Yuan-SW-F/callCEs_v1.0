@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Author: fuyuan (907569282@qq.com)
+# Author: Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-06-06 17:00:45
 # Example getque4mref.py   
 import sys, os, re
