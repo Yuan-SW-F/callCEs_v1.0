@@ -1,6 +1,6 @@
 #!/bin/bash
 # File Name: CNSpipeline.sh
-# Author  : fuyuan, 907569282@qq.com
+# Author  : Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-04-15 16:30:26
 source /public/home/fuyuan/.bashrc
 ### input ref query
@@ -22,7 +22,7 @@ faToTwoBit $2 $QN.2bit
 faSize $2 -detailed > $QN.sizes
 
 ### lastz
-perl /vol2/agis/chengshifeng_group/fuyuan/02.Nfix/01.118species_CNE/01.lastz/split_10M.pl $2
+perl split_10M.pl $2
 for i in \`ls $QN.dir/* | grep -v axt \`;do 
 	lastz $1[multiple] \$i[multiple] H=2000 X=9400 L=3000 K=2200 --format=axt > \$i-$RM.axt
 done 
