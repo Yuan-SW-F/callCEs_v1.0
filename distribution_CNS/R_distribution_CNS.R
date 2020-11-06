@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
-# File Name: /vol3/asbc/CHENGSHIFENG_GROUP/fuyuan/02.Nfix/00.81species_CNE/05.CNE/04.distribution/R.R
-# Author: fuyuan, 907569282@qq.com
+# File Name: .R
+# Author: Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-11-26 17:57:07
 
 args <- commandArgs(T)
