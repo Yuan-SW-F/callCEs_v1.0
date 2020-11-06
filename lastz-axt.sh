@@ -1,6 +1,6 @@
 #!/bin/bash
 # File Name: CNSpipeline.sh
-# Author  : fuyuan, 907569282@qq.com
+# Author  : Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-04-15 16:30:26
 source /public/home/fuyuan/.bashrc
 ### input ref query
@@ -30,7 +30,7 @@ lastz $1[multiple] $2[multiple] --ambiguous=iupac --chain --notransition H=2000 
 axtSort $RM-$QM.axt $RM-$QM.sorted.axt
 #axtBest -minOutSize=200 -minScore=10000 $RM-$QM.sorted.axt all $RM-$QM.sorted.best.axt
 ln -s $RM-$QM.sorted.axt $RM-$QM.sorted.best.axt
-axtChain -linearGap=/public/agis/chengshifeng_group/fuyuan/pip-fuyuan/GAP_matrix_plant.dms $RM-$QM.sorted.best.axt $RN.2bit $QN.2bit $RM-$QM.sorted.best.filtered.chain
+axtChain -linearGap=GAP_matrix_plant.dms $RM-$QM.sorted.best.axt $RN.2bit $QN.2bit $RM-$QM.sorted.best.filtered.chain
 chainPreNet $RM-$QM.sorted.best.filtered.chain $RN.sizes $QN.sizes $RM-$QM.sorted.best.filtered.pre.chain
 chainNet $RM-$QM.sorted.best.filtered.pre.chain -minSpace=1 $RN.sizes $QN.sizes stdout /dev/null | netSyntenic stdin $RM-$QM.sorted.best.filtered.pre.noClass.net
 
