@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 =head1 Info
-    Script Author  : fuyuan, 907569282@qq.com
+    Script Author  : Yuan-SW-F, yuanswf@163.com
     Created Time   : 2019-09-20 17:51:38
     Example: getmafbyclass.pl
 =cut
@@ -23,7 +23,7 @@ while (<IN>){
 	}
 
 mkdir "$dir";
-for my $i (split /\s+/,`ls /vol2/agis/chengshifeng_group/fuyuan/02.Nfix/00.81species_CNE/00.MSA/*maf`){
+for my $i (split /\s+/,`ls ./CNE/00.MSA/*maf`){
 	my $file = $1 if $i =~ /([^\/]+)$/;
 	open IN,$i;
 	print "$dir/$file";
