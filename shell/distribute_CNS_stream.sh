@@ -1,6 +1,6 @@
 #!/bin/bash
 # File Name: stream.sh
-# Author  : fuyuan, 907569282@qq.com
+# Author  : Yuan-SW-F, yuanswf@163.com
 # Created Time: 2020-03-06 10:59:20
 source ~/.bashrc
 
