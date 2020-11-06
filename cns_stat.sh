@@ -1,6 +1,6 @@
 #!/bin/bash
 # File Name: stat.sh
-# Author  : fuyuan, 907569282@qq.com
+# Author  : Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-05-06 15:08:16
 source ~/.bashrc
 echo CNS stat of $1
