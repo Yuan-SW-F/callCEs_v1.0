@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Author: fuyuan (907569282@qq.com)
+# Author: fuyuan Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-06-13 09:34:15
 # Example distribution_CES_species.py   
 import sys, os, re
