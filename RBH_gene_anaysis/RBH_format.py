@@ -1,6 +1,6 @@
-#!/public/agis/chengshifeng_group/fuyuan/pip-fuyuan/app/anaconda2/bin/python
+#!anaconda2/bin/python
 # -*- coding: UTF-8 -*-
-# Author: fuyuan (907569282@qq.com)
+# Author: Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-04-16 14:37:46
 # Example RBH_format.py   
 import sys, os, re
