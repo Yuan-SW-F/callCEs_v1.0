@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 =head1 Info
-    Script Author  : fuyuan, 907569282@qq.com
+    Script Author  : Yuan-SW-F, yuanswf@163.com
     Created Time   : 2020-03-23 17:02:45
     Example: PAV_CNS.pl
 =cut
