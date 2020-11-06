@@ -1,6 +1,6 @@
 #!/bin/bash
 # File Name: sortmerge.sh
-# Author  : fuyuan, 907569282@qq.com
+# Author  : Yuan-SW-F, yuanswf@163.com
 # Created Time: 2020-02-20 12:37:08
 source ~/.bashrc
 mkdir $1
