@@ -1,6 +1,6 @@
 #!/bin/bash
 # File Name: gerp.sh
-# Author  : fuyuan, 907569282@qq.com
+# Author  : Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-05-17 09:59:09
 source ~/.bashrc
 
