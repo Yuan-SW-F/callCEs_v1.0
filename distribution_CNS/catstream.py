@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Author: fuyuan (907569282@qq.com)
+# Author: Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-10-10 14:52:29
 # Example python.py   
 import sys, os, re
