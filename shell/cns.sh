@@ -1,6 +1,6 @@
 #!/bin/bash
 # File Name: cns.sh
-# Author  : fuyuan, 907569282@qq.com
+# Author  : Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-11-05 15:14:15
 source ~/.bashrc
 
@@ -34,8 +34,8 @@ done
 super_CNE.py ../sp.list 'ls *.muscle' > ../$R.phy
 cd ..
 PhyML -i $R.phy
-/public/agis/chengshifeng_group/fuyuan/pip-fuyuan/compip/Plant/03_Phylogeny/bin/alter_tree.pl $R.phy_phyml_tree.txt --taxon Medicago_truncatula > $R.phy_phyml_tree.txt.root
-/public/agis/chengshifeng_group/fuyuan/pip-fuyuan/compip/Plant/03_Phylogeny/bin/draw_tree.pl $R.phy_phyml_tree.txt.root > $R.phy_phyml_tree.txt.root.svg
+alter_tree.pl $R.phy_phyml_tree.txt --taxon Medicago_truncatula > $R.phy_phyml_tree.txt.root
+draw_tree.pl $R.phy_phyml_tree.txt.root > $R.phy_phyml_tree.txt.root.svg
 cd ..
 
 mkdir annotate
