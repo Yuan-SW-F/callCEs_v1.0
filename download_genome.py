@@ -1,6 +1,6 @@
 #!/share/app/python-2.7.10/bin/python
 # -*- coding: UTF-8 -*-
-# Author: fuyuan (907569282@qq.com)
+# Author: Yuan-SW-F, yuanswf@163.com
 # Created Time: 2019-04-04 09:11:28
 # Example download_genome.py   
 import sys, os, re
