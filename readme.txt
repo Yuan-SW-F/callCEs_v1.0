@@ -1,3 +1,5 @@
+### 详情请关注公众号 生物信息分析学习
+
 #cns注释程序，全基因组注释信息包括mRNA，CDS，注释后信息如图所示：
 annotation_cns.py species.gff cns.bed
 #cns序列比对程序，准备好的某CNS的各物种比对结果作为输入文件，获得不同物种的该CNS序列的一致性比对结果。
