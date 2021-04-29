@@ -1,7 +1,7 @@
 ### 详情请关注公众号 生物信息分析学习
 
 ### 本文待发表，请引用：https://github.com/Yuan-SW-F/callCEs_v1.0/； https://github.com/Yuan-SW-F/callCEs_v1.0/callDBs
-## 发表后请因为文章
+## 发表后请引用文章
 
 #cns注释程序，全基因组注释信息包括mRNA，CDS，注释后信息如图所示：
 annotation_cns.py species.gff cns.bed
